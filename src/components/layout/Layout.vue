@@ -17,7 +17,7 @@
         v-if="!drawer"
         @click.stop="drawer = !drawer"
       ></v-app-bar-nav-icon>
-      <v-img :src="logo" maxWidth='40' />
+      <v-img :src="logo" maxWidth="40" />
 
       <v-toolbar-title class="ma-4">大连理工大学</v-toolbar-title>
       <!-- <v-menu :key="text" :rounded="rounded" offset-y open-on-hover>
@@ -33,9 +33,14 @@
       </v-menu> -->
 
       <v-spacer></v-spacer>
-      <v-menu :rounded="rounded" offset-y open-on-hover>
+      <v-menu
+        :rounded="rounded"
+        offset-y
+        open-on-hover
+        class="d-none d-md-flex"
+      >
         <template v-slot:activator="{ attrs, on }">
-          <v-btn class="ma-2" v-bind="attrs" v-on="on" text>
+          <v-btn class="ma-2 d-none d-md-flex" v-bind="attrs" v-on="on" text>
             调色板 <v-icon>mdi-open-in-new</v-icon>
           </v-btn>
         </template>
@@ -48,7 +53,7 @@
       </v-menu>
 
       <v-btn
-        class="ma-1"
+        class="ma-1 d-none d-md-flex"
         href="https://github.com/vuetifyjs/vuetify/releases/latest"
         target="_blank"
         text
@@ -84,7 +89,7 @@ export default {
     return {
       logo: logo,
       text: "1",
-      drawer: true,
+      drawer: null,
       rounded: true,
       items: [
         {

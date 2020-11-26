@@ -93,6 +93,12 @@ const constantRouter = [{
 }];
 constantRouter.push({
     hidden: true,
+    path: '/login', 
+    component: () => import("@/components/login/Login")
+});
+
+constantRouter.push({
+    hidden: true,
     path: '/*',
     redirect: "/404",
     component: Layout,
