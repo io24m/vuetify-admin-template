@@ -4,26 +4,47 @@ import Layout from "@/components/layout/Layout"
 const constantRouter = [{
     name: "控制台",
     path: "/",
-    redirect: "/dashboard",
     component: Layout,
     meta: {
         icon: "mdi-folder"
     },
     children: [{
-        path: "/dashboard",
+        path: "/",
         component: () => import("@/views/dashboard/Dashboard")
     }]
 }, {
+    name: "列表",
+    path: "/table",
+    component: Layout,
+    meta: {
+        icon: "mdi-silverware-fork-knife"
+    },
+    children: [{
+        name: '表格1',
+        path: "/table1",
+        component: () => import("@/views/table/Table"),
+        meta: {
+            icon: "mdi-silverware-fork-knife"
+        },
+    }, {
+        name: '表格2',
+        path: "/table2",
+        component: () => import("@/views/table/Table"),
+        meta: {
+            icon: "mdi-run"
+        },
+    }]
+}, {
     name: "控制台",
-    path: "/1",
-    redirect: "/table",
+    path: "/2",
+    redirect: "/table34",
     component: Layout,
     meta: {
         icon: "mdi-silverware-fork-knife"
     },
     children: [{
         name: '表格',
-        path: "/table",
+        path: "/table34",
         component: () => import("@/views/table/Table"),
         meta: {
             icon: "mdi-silverware-fork-knife"

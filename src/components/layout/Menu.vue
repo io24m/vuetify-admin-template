@@ -1,9 +1,9 @@
 <template>
-  <v-list nav dense>
-    <template v-for="item in routers">
+  <v-list nav dense expand>
+    <template v-for="(item, index) in routers">
       <template v-if="!hasChild(item.children)">
-        <v-list-item-group color="primary" :key="item.path">
-          <v-list-item @click='openMenu'>
+        <v-list-item-group color="primary" :key="index">
+          <v-list-item :to="item.path">
             <v-list-item-icon>
               <v-icon v-text="item.meta && item.meta.icon"> </v-icon>
             </v-list-item-icon>
@@ -15,8 +15,7 @@
       </template>
       <template v-else>
         <v-list-group
-          :key="item.path"
-          v-model="item.active"
+          :key="index" 
           :prepend-icon="item.meta && item.meta.icon"
         >
           <template v-slot:activator>
@@ -25,9 +24,14 @@
             </v-list-item-content>
           </template>
           <v-list-item-group>
-            <v-list-item v-for="child in item.children" :key="child.path">
+            <v-list-item
+              v-for="(child, childIndex) in item.children"
+              :key="childIndex"
+              :to="child.path"
+            >
               <v-list-item-icon>
-                <v-icon v-text="child.meta && child.meta.icon"></v-icon>
+                <!-- <v-icon v-text="child.meta && child.meta.icon"></v-icon> -->
+                <v-icon></v-icon>
               </v-list-item-icon>
               <v-list-item-content>
                 <v-list-item-title v-text="child.name"></v-list-item-title>
@@ -37,40 +41,67 @@
         </v-list-group>
       </template>
     </template>
-    <!-- 一级 -->
-    <!-- <v-list-item-group v-model="selectedItem" color="primary">
-      <v-list-item v-for="(item, i) in items0" :key="i">
-        <v-list-item-icon>
-          <v-icon v-text="item.icon"></v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-          <v-list-item-title v-text="item.text"></v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </v-list-item-group>
-    <v-divider></v-divider> -->
-    <!-- 二级 -->
-    <!-- <v-list-group
-      v-for="item in items"
-      :key="item.title"
-      v-model="item.active"
-      :prepend-icon="item.action"
-    >
+
+    <!-- <v-divider></v-divider>
+
+    <v-list-group prepend-icon="mdi-account-circle">
       <template v-slot:activator>
-        <v-list-item-content>
-          <v-list-item-title v-text="item.title"></v-list-item-title>
-        </v-list-item-content>
+        <v-list-item-title>一级菜单</v-list-item-title>
       </template>
-      <v-list-item-group>
-        <v-list-item v-for="child in item.items" :key="child.title">
+      <v-list-group sub-group>
+        <template v-slot:activator>
+          <v-list-item-content>
+            <v-list-item-title>二级菜单</v-list-item-title>
+          </v-list-item-content>
+        </template>
+        <v-list-item link>
           <v-list-item-icon>
-            <v-icon v-text="child.action"></v-icon>
+            <v-icon> </v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title v-text="child.title"></v-list-item-title>
+            <v-list-item-title>三级菜单</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-      </v-list-item-group>
+        <v-list-item>
+          <v-list-item-icon>
+            <v-icon> mdi-account-circle</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>三级菜单</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list-group>
+      <v-list-group sub-group>
+        <template v-slot:activator>
+          <v-list-item-content>
+            <v-list-item-title>二级菜单</v-list-item-title>
+          </v-list-item-content>
+        </template>
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon> mdi-account-circle</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>三级菜单</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-icon>
+            <v-icon> mdi-account-circle</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>三级菜单</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list-group>
+      <v-list-item link>
+        <v-list-item-icon>
+          <v-icon> </v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>er级菜单</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
     </v-list-group> -->
   </v-list>
 </template>
@@ -79,6 +110,7 @@ import { mapGetters } from "vuex";
 export default {
   data: () => ({
     selectedItem: null,
+    model: [1],
   }),
   computed: {
     ...mapGetters({
@@ -102,8 +134,7 @@ export default {
       return childrens.length !== 1;
     },
     openMenu(e) {
-      
-      console.log(e)
+      console.log(e);
     },
   },
 };

@@ -4,8 +4,8 @@
       {{ text }}
 
       <template v-slot:action="{ attrs }">
-        <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
-          Close
+        <v-btn  text v-bind="attrs" @click="snackbar = false">
+          关闭
         </v-btn>
       </template>
     </v-snackbar>
@@ -21,7 +21,9 @@ export default {
     text: "Hello, I'm a snackbar",
   }),
   methods: {
-    cl() {},
+    cl() {
+
+    },
   },
 };
 </script>
