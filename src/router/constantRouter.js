@@ -91,4 +91,17 @@ const constantRouter = [{
         component: () => import("@/views/table/Table")
     }]
 }];
+constantRouter.push({
+    hidden: true,
+    path: '/*',
+    redirect: "/404",
+    component: Layout,
+    meta: {
+        icon: 'mdi-school'
+    },
+    children: [{
+        path: "/404",
+        component: () => import("@/components/error/Page404")
+    }]
+});
 export default constantRouter

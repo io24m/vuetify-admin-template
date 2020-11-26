@@ -1,45 +1,46 @@
 <template>
   <v-list nav dense expand>
     <template v-for="(item, index) in routers">
-      <template v-if="!hasChild(item.children)">
-        <v-list-item-group color="primary" :key="index">
-          <v-list-item :to="item.path">
-            <v-list-item-icon>
-              <v-icon v-text="item.meta && item.meta.icon"> </v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title v-text="item.name"></v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list-item-group>
-      </template>
-      <template v-else>
-        <v-list-group
-          :key="index" 
-          :prepend-icon="item.meta && item.meta.icon"
-        >
-          <template v-slot:activator>
-            <v-list-item-content>
-              <v-list-item-title v-text="item.name"></v-list-item-title>
-            </v-list-item-content>
-          </template>
-          <v-list-item-group>
-            <v-list-item
-              v-for="(child, childIndex) in item.children"
-              :key="childIndex"
-              :to="child.path"
-            >
+      <template v-if="!item.hidden">
+        <template v-if="!hasChild(item.children)">
+          <v-list-item-group color="primary" :key="index">
+            <v-list-item :to="item.path">
               <v-list-item-icon>
-                <!-- <v-icon v-text="child.meta && child.meta.icon"></v-icon> -->
-                <v-icon></v-icon>
+                <v-icon v-text="item.meta && item.meta.icon"> </v-icon>
               </v-list-item-icon>
               <v-list-item-content>
-                <v-list-item-title v-text="child.name"></v-list-item-title>
+                <v-list-item-title v-text="item.name"></v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list-item-group>
-        </v-list-group>
-      </template>
+        </template>
+        <template v-else>
+          <v-list-group
+            :key="index"
+            :prepend-icon="item.meta && item.meta.icon"
+          >
+            <template v-slot:activator>
+              <v-list-item-content>
+                <v-list-item-title v-text="item.name"></v-list-item-title>
+              </v-list-item-content>
+            </template>
+            <v-list-item-group>
+              <v-list-item
+                v-for="(child, childIndex) in item.children"
+                :key="childIndex"
+                :to="child.path"
+              >
+                <v-list-item-icon>
+                  <!-- <v-icon v-text="child.meta && child.meta.icon"></v-icon> -->
+                  <v-icon></v-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                  <v-list-item-title v-text="child.name"></v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-list-group> </template
+      ></template>
     </template>
 
     <!-- <v-divider></v-divider>
