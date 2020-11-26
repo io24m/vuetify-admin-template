@@ -3,7 +3,7 @@
     <template v-for="item in routers">
       <template v-if="!hasChild(item.children)">
         <v-list-item-group color="primary" :key="item.path">
-          <v-list-item>
+          <v-list-item @click='openMenu'>
             <v-list-item-icon>
               <v-icon v-text="item.meta && item.meta.icon"> </v-icon>
             </v-list-item-icon>
@@ -101,7 +101,10 @@ export default {
       });
       return childrens.length !== 1;
     },
-    openMenu() {},
+    openMenu(e) {
+      
+      console.log(e)
+    },
   },
 };
 </script>
