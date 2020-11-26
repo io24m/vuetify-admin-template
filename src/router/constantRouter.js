@@ -22,7 +22,7 @@ const constantRouter = [{
     children: [{
         name: '表格1',
         path: "/table1",
-        component: () => import("@/views/table/Table"),
+        component: () => import("@/views/table/Table1"),
         meta: {
             icon: "mdi-silverware-fork-knife"
         },
