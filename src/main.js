@@ -1,16 +1,13 @@
 import Vue from 'vue'
-import App from './App.vue'
-import vuetify from './plugins/vuetify';
-
-// import VuetifyToast from 'vuetify-toast-snackbar'
-
 import store from './store/index'
 import router from "./router"
-import './utils/axiosPlugin.js'
+
+import vuetify from './plugins/vuetify';
+import './plugins/axios.js'
+
+import App from './App.vue'
 
 Vue.config.productionTip = false
-
-// Vue.use(VuetifyToast)
 
 new Vue({
   store,

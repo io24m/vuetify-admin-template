@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import request from './request.js'
+import request from '@/utils/request.js'
 
 const axiosPlugin = {
     install(Vue, instance) {
