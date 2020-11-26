@@ -78,12 +78,14 @@
   </v-list>
 </template>
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data: () => ({
     selectedItem: null,
     items0: [
       { text: "My Files", icon: "mdi-folder" },
-      { text: "Shared with me", icon: "mdi-account-multiple" }
+      { text: "Shared with me", icon: "mdi-account-multiple" },
     ],
     items: [
       {
@@ -109,7 +111,7 @@ export default {
         action: "mdi-run",
         items: [{ title: "List Item" }],
         title: "Family",
-      }
+      },
     ],
     admins: [
       ["Management", "mdi-account-multiple-outline"],
@@ -122,5 +124,10 @@ export default {
       ["Delete", "mdi-delete"],
     ],
   }),
+  computed: {
+    ...mapGetters({
+      routes: "permission/getRouters",
+    }),
+  },
 };
 </script>
