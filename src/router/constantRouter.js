@@ -56,6 +56,62 @@ const constantRouter = [{
         meta: {
             icon: "mdi-run"
         },
+    }, {
+        name: '表格3',
+        path: "/table3",
+        component: () => import("@/views/table/Table"),
+        meta: {
+            icon: "mdi-run"
+        },
+    }, {
+        name: '表格4',
+        path: "/table4",
+        component: () => import("@/views/table/Table"),
+        meta: {
+            icon: "mdi-run"
+        },
+    }, {
+        name: '表格5',
+        path: "/table5",
+        component: () => import("@/views/table/Table"),
+        meta: {
+            icon: "mdi-run"
+        },
+    },{
+        name: '表格',
+        path: "/table34",
+        component: () => import("@/views/table/Table"),
+        meta: {
+            icon: "mdi-silverware-fork-knife"
+        },
+    }, {
+        name: '表格1',
+        path: "/table1q",
+        component: () => import("@/views/table/Table"),
+        meta: {
+            icon: "mdi-run"
+        },
+    }, {
+        name: '表格3',
+        path: "/table3w",
+        component: () => import("@/views/table/Table"),
+        meta: {
+            icon: "mdi-run"
+        },
+    }, {
+        name: '表格4',
+        path: "/table4e",
+        component: () => import("@/views/table/Table"),
+        meta: {
+            icon: "mdi-run"
+        },
+    }, {
+        name: '表格5',
+        path: "/table5r",
+        component: () => import("@/views/table/Table"),
+        meta: {
+            icon: "mdi-run"
+        },
     }]
 }, {
     name: '邮件',
