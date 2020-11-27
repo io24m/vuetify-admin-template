@@ -9,6 +9,8 @@ import {
     getToken
 } from '@/utils/auth.js'
 
+import settings from '@/settings.js'
+
 NProgress.configure({
     showSpinner: false
 })
@@ -27,7 +29,7 @@ const router = createRouter()
 
 router.beforeEach(async (to, from, next) => {
     NProgress.start()
-    document.title = to.meta.title
+    document.title = to.meta && to.meta.title || settings.app.title
     const token = getToken()
     if (token) {
         if (to.path === '/login') {
@@ -44,31 +46,8 @@ router.beforeEach(async (to, from, next) => {
             NProgress.done()
         }
     }
-
-    // if (i !== 0) {
-    //     next()
-    //     return
-    // }
-    // i = i + 1
-    // const r = [{
-    //     icon: "mail",
-    //     name: "邮件",
-    //     path: "/mail",
-    //     component: () => import("@/components/layout/Layout"),
-    //     // redirect: "/mail",
-    //     children: [{
-    //         icon: "mail",
-    //         name: "h1",
-    //         path: "/mail",
-    //         component: () => import("@/views/index/Index"),
-    //     }, ],
-    // }, ]
-    // store.dispatch('permission/addRouter', r)
-    // router.addRoutes(r);
-    // next()
 });
 router.afterEach(() => {
-    // finish progress bar
     NProgress.done()
 })
 
