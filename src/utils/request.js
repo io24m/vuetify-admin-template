@@ -11,7 +11,7 @@ const request = axios.create(settings.axios)
 
 // 添加请求拦截器
 request.interceptors.request.use(function (config) {
-    config.headers['admin-Token'] = getToken()
+    config.headers['Admin-Token'] = getToken()
     return config;
 }, function (error) {
     return Promise.reject(error);
