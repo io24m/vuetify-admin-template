@@ -1,6 +1,6 @@
 const settings = {
     axios: {
-        baseURL: "http://localhost:8849/",
+        baseURL: "",
         timeout: 1000 * 15,
     },
     app: {

@@ -5,6 +5,10 @@ import constantRouter from './constantRouter.js'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
+import {
+    getToken
+} from '@/utils/auth.js'
+
 NProgress.configure({
     showSpinner: false
 })
@@ -23,7 +27,24 @@ const router = createRouter()
 
 router.beforeEach(async (to, from, next) => {
     NProgress.start()
-    next()
+    document.title = to.meta.title
+    const token = getToken()
+    if (token) {
+        if (to.path === '/login') {
+            next("/")
+            NProgress.done()
+        } else {
+            next()
+        }
+    } else {
+        if (to.path === '/login') {
+            next()
+        } else {
+            next(`/login`)
+            NProgress.done()
+        }
+    }
+
     // if (i !== 0) {
     //     next()
     //     return

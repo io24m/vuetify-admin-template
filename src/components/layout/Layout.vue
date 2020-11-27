@@ -19,7 +19,7 @@
       ></v-app-bar-nav-icon>
       <v-img :src="logo" maxWidth="40" />
 
-      <v-toolbar-title class="ma-4">大连理工大学</v-toolbar-title>
+      <v-toolbar-title class="ma-4">Vuetify</v-toolbar-title>
       <!-- <v-menu :key="text" :rounded="rounded" offset-y open-on-hover>
         <template v-slot:activator="{ attrs, on }">
           <v-btn class="ma-4" v-bind="attrs" v-on="on" text> v2.3.16 </v-btn>

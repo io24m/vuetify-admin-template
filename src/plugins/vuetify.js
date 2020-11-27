@@ -1,3 +1,4 @@
+import 'font-awesome/css/font-awesome.min.css'
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib';
 import zhHans from 'vuetify/es5/locale/zh-Hans'
@@ -11,5 +12,8 @@ export default new Vuetify({
             zhHans
         },
         current: 'zhHans'
+    },
+    icons: {
+       // iconfont: 'fa4',
     },
 });

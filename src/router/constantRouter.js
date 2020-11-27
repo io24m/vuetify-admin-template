@@ -6,7 +6,7 @@ const constantRouter = [{
     path: "/",
     component: Layout,
     meta: {
-        icon: "mdi-folder"
+        icon: "fa-tachometer"
     },
     children: [{
         path: "/",
@@ -17,14 +17,15 @@ const constantRouter = [{
     path: "/table",
     component: Layout,
     meta: {
-        icon: "mdi-silverware-fork-knife"
+        icon: "fa-table"
     },
     children: [{
         name: '表格1',
         path: "/table1",
         component: () => import("@/views/table/Table1"),
         meta: {
-            icon: "mdi-silverware-fork-knife"
+            icon: "mdi-silverware-fork-knife",
+            title: '表格'
         },
     }, {
         name: '表格2',
@@ -77,7 +78,7 @@ const constantRouter = [{
         meta: {
             icon: "mdi-run"
         },
-    },{
+    }, {
         name: '表格',
         path: "/table34",
         component: () => import("@/views/table/Table"),
@@ -149,7 +150,7 @@ const constantRouter = [{
 }];
 constantRouter.push({
     hidden: true,
-    path: '/login', 
+    path: '/login',
     component: () => import("@/components/login/Login")
 });
 

@@ -7,7 +7,10 @@ import './plugins/axios.js'
 
 import App from './App.vue'
 
+import Mock from './mock/index.js'
 Vue.config.productionTip = false
+
+Mock.bootstrap()
 
 new Vue({
   store,

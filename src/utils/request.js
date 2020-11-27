@@ -1,5 +1,9 @@
 import axios from 'axios'
 import settings from '@/settings.js'
+import {
+    getToken
+} from '@/utils/auth.js'
+
 // import {
 //     message
 // } from 'ant-design-vue'
@@ -7,6 +11,7 @@ const request = axios.create(settings.axios)
 
 // 添加请求拦截器
 request.interceptors.request.use(function (config) {
+    config.headers['admin-Token'] = getToken()
     return config;
 }, function (error) {
     return Promise.reject(error);
