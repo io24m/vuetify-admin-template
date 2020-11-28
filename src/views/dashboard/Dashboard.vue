@@ -1,6 +1,17 @@
 <template>
   <div>
-    <v-snackbar v-model="snackbar">
+    <v-snackbar
+      :timeout="-1"
+      :value="true"
+      absolute
+      bottom
+      color="primary"
+      left
+      text
+    >
+      Lorem ipsum dolor sit amet consectetur.
+    </v-snackbar>
+    <v-snackbar v-model="snackbar"  app top>
       {{ text }}
       <template v-slot:action="{ attrs }">
         <v-btn text v-bind="attrs" @click="snackbar = false"> 关闭 </v-btn>
