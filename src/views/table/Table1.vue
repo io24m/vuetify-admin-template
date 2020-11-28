@@ -7,6 +7,15 @@
             <v-text-field
               dense
               v-model="firstname"
+              label="姓名"
+              outlined
+              clearable
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" md="3">
+            <v-text-field
+              dense
+              v-model="firstname"
               :rules="nameRules"
               :counter="10"
               label="姓名"
@@ -24,6 +33,9 @@
             ></v-text-field>
           </v-col>
           <v-col cols="12" md="3">
+            <v-btn color="primary">查询</v-btn>
+          </v-col>
+          <v-col cols="12" md="3">
             <v-text-field
               dense
               v-model="firstname"
@@ -32,9 +44,6 @@
               label="性别"
               required
             ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="3">
-            <v-btn  color="primary">查询</v-btn>
           </v-col>
         </v-row>
         <v-row>
@@ -53,7 +62,6 @@
     </v-form>
 
     <v-data-table
-      
       :headers="headers"
       :items="desserts"
       item-key="name"

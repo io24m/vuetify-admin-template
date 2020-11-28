@@ -62,6 +62,17 @@
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
 
+      <v-btn
+        fab
+        icon
+        right
+        class="mr-4"
+        href="https://github.com/io24m/vuetify-admin-template"
+        target="_blank"
+      >
+        <v-icon>fa fa-github</v-icon>
+      </v-btn>
+
       <v-avatar color="primary" size="40">
         <span class="white--text headline">40</span></v-avatar
       >

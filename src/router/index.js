@@ -33,7 +33,8 @@ router.beforeEach(async (to, from, next) => {
     const token = getToken()
     if (token) {
         if (to.path === '/login') {
-            next("/")
+            next()
+            // next("/")
             NProgress.done()
         } else {
             next()

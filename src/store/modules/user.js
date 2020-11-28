@@ -39,9 +39,14 @@ const actions = {
                     password
                 }
             }).then(function (res) {
-                commit('SET_TOKEN', res.result)
-                setToken(res.result)
-                resolve(res)
+                if (res.success) {
+                    commit('SET_TOKEN', res.result)
+                    setToken(res.result)
+                    resolve(res)
+                } else {
+                    reject(res)
+                }
+
             }).catch(function (error) {
                 reject(error)
             })
