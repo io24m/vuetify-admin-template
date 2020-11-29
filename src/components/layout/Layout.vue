@@ -72,8 +72,28 @@
         rounded
         small
       >
-        <v-icon>fa fa-github</v-icon>
+        <v-icon>fa-github</v-icon>
       </v-btn>
+
+      <v-btn icon right class="mr-4" rounded small>
+        <v-icon>fa-user-circle</v-icon>
+      </v-btn>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            icon
+            right
+            class="mr-4 d-none d-md-flex"
+            rounded
+            small
+            v-bind="attrs"
+            v-on="on"
+          >
+            <v-icon>fa-window-maximize</v-icon>
+          </v-btn>
+        </template>
+        <span>最大化</span>
+      </v-tooltip>
 
       <v-avatar color="primary" size="40">
         <span class="white--text headline">40</span></v-avatar

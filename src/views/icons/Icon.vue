@@ -1089,7 +1089,7 @@ export default {
   },
   methods: {
     copyIcon(icon, event) {
-      icon = ` <v-icon color="primary">${icon}</v-icon>`;
+      icon = `<v-icon>${icon}</v-icon>`;
       clipboard(icon, event);
       console.log(icon);
     },
