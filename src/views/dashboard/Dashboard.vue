@@ -54,12 +54,16 @@
         </v-card>
       </v-col>
     </v-row>
+    <lineChart></lineChart>
   </div>
 </template>
 <script>
 import foster from "@/assets/foster.jpg";
 import halcyon from "@/assets/halcyon.png";
+import lineChart from "./charts/LineChart.vue";
+
 export default {
+  components: { lineChart },
   data: () => ({
     cards: [
       {
