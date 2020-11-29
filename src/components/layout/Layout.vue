@@ -62,13 +62,15 @@
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
 
+      <!-- fab -->
       <v-btn
-        fab
         icon
         right
         class="mr-4"
         href="https://github.com/io24m/vuetify-admin-template"
         target="_blank"
+        rounded
+        small
       >
         <v-icon>fa fa-github</v-icon>
       </v-btn>
