@@ -5,7 +5,7 @@ const settings = {
         timeout: 1000 * 15,
     },
     app: {
-        title: 'Vuetify',
+        title: 'Vuetify-Admin',
         company: 'Vuetify',
         version: '0.0.1 beta',
     },

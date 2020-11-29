@@ -13,6 +13,17 @@ const constantRouter = [{
         component: () => import("@/views/dashboard/Dashboard")
     }]
 }, {
+    name: "控制台1",
+    path: "/1",
+    component: Layout,
+    meta: {
+        icon: "fa-tachometer"
+    },
+    children: [{
+        path: "/1",
+        component: () => import("@/views/dashboard/Dashboard1")
+    }]
+}, {
     name: "列表",
     path: "/table",
     component: Layout,
