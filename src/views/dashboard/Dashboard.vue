@@ -54,16 +54,24 @@
         </v-card>
       </v-col>
     </v-row>
-    <lineChart></lineChart>
+    <LineChart></LineChart>
+    <v-row>
+      <v-col cols="12" md="4" sm="12"> <PieChart></PieChart> </v-col>
+      <v-col cols="12" md="4" sm="12"> <RaddarChart></RaddarChart> </v-col>
+      <v-col cols="12" md="4" sm="12"> <BarChart></BarChart> </v-col
+    ></v-row>
   </div>
 </template>
 <script>
 import foster from "@/assets/foster.jpg";
 import halcyon from "@/assets/halcyon.png";
-import lineChart from "./charts/LineChart.vue";
+import LineChart from "./charts/LineChart.vue";
+import PieChart from "./charts/PieChart.vue";
+import BarChart from "./charts/BarChart.vue";
+import RaddarChart from "./charts/RaddarChart.vue";
 
 export default {
-  components: { lineChart },
+  components: { LineChart, PieChart, BarChart, RaddarChart },
   data: () => ({
     cards: [
       {
