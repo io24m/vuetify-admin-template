@@ -2,7 +2,6 @@
   <v-app>
     <v-snackbar v-model="snackbar" color="red darken-2" top>
       {{ errMsg }}
-
       <template v-slot:action="{ attrs }">
         <v-btn color="white" text v-bind="attrs" @click="snackbar = false">
           关闭
@@ -14,19 +13,19 @@
         <v-row justify="center">
           <v-col cols="12" md="4" sm="12">
             <v-text-field
-              clearable
               class="mt-2"
               label="用户名"
               :rules="rules"
               v-model="userName"
             ></v-text-field>
             <v-text-field
-              clearable
               class="mt-2"
               label="密码"
               :rules="rules"
-              type="password"
+              :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+              :type="showPassword ? 'text' : 'password'"
               v-model="password"
+              @click:append="showPassword = !showPassword"
             ></v-text-field>
             <v-btn
               color="primary"
@@ -55,6 +54,7 @@ export default {
       (value) => !!value || "必填",
       // (value) => (value && value.length >= 3) || "Min 3 characters",
     ],
+    showPassword: false,
   }),
   methods: {
     login() {

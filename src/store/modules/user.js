@@ -1,12 +1,10 @@
-import {
-    getToken,
-    setToken
-} from '@/utils/auth.js'
+import { getToken, setToken } from '@/utils/auth.js'
 import request from '@/utils/request.js'
 const state = {
     token: getToken(),
+    authData: null,
     user: {
-        name: "李先生"
+        name: "Lee"
     }
 }
 const getters = {
@@ -23,13 +21,8 @@ const mutations = {
     },
 }
 const actions = {
-    login({
-        commit
-    }, user) {
-        const {
-            userName,
-            password
-        } = user
+    login({ commit }, user) {
+        const { userName, password } = user
         return new Promise((resolve, reject) => {
             request({
                 url: '/login',
@@ -46,12 +39,16 @@ const actions = {
                 } else {
                     reject(res)
                 }
-
             }).catch(function (error) {
                 reject(error)
             })
         })
-    }
+    },
+    // authData({ commit }, user) {
+    //     return new Promise((resolve, reject) => {
+
+    //     })
+    // }
 
 }
 

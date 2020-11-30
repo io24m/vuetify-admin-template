@@ -188,7 +188,7 @@ export default {
   methods: {
     post() {
       this.$http({
-        url: "/login",
+        url: "/login1",
         method: "post",
         data: {
           userName: "admin",

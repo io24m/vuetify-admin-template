@@ -4,14 +4,14 @@
       <v-col cols="12" md="3">
         <v-text-field
           dense
-          v-model="firstname"
+          v-model="param.firstname"
           label="姓名"
           outlined
           clearable
         ></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
-        <v-btn color="primary"  >查询</v-btn>
+        <v-btn color="primary" @click="search">查询</v-btn>
       </v-col>
     </v-row>
     <v-data-table
@@ -26,6 +26,7 @@
 <script>
 export default {
   data: () => ({
+    param: { firstname: "init" },
     desserts: [
       {
         name: "Frozen Yogurt",
@@ -122,5 +123,10 @@ export default {
       { text: "Iron (%)", value: "iron" },
     ],
   }),
+  methods: {
+    search() {
+      console.log(this.param);
+    },
+  },
 };
 </script>

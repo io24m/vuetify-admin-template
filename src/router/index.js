@@ -31,22 +31,24 @@ router.beforeEach(async (to, from, next) => {
     NProgress.start()
     document.title = to.meta && to.meta.title || settings.app.title
     const token = getToken()
-    if (token) {
-        if (to.path === '/login') {
-            next()
-            // next("/")
-            NProgress.done()
-        } else {
-            next()
-        }
-    } else {
+    if (!token) {
         if (to.path === '/login') {
             next()
         } else {
             next(`/login`)
             NProgress.done()
         }
+        return
     }
+    if (to.path === '/login') {
+        next()
+        // next("/")
+        NProgress.done()
+        return
+    }
+    //auth
+    
+    next()
 });
 router.afterEach(() => {
     NProgress.done()
