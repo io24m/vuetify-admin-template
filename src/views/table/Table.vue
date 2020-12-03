@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import Toast from "@/components/toast/index.js";
 export default {
   data: () => ({
     param: { firstname: "init" },
@@ -125,6 +126,7 @@ export default {
   }),
   methods: {
     search() {
+      Toast({ message: "test" });
       console.log(this.param);
     },
   },
