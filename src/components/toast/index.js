@@ -8,9 +8,11 @@ const Toast = function (config) {
         data: config
     });
     toast.$mount();
+    // const appToast = document.getElementById('app')
+    // appToast.appendChild(toast.$el);
     document.body.appendChild(toast.$el);
 }
-Toast.closeAll=function(){
+Toast.closeAll = function () {
 
 }
 export default Toast

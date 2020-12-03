@@ -1,19 +1,20 @@
 <template>
   <transition name="vuttify-toast" @after-leave="afterLeave">
-    <div v-show="visible" @mouseenter="clearTimer" @mouseleave="startTimer">
-      <v-snackbar
-        :timeout="5000"
-        :value="true"
-        absolute
-        bottom
-        color="primary"
-        right
-        text
-      >
-        {{ message }}
-      </v-snackbar>
-    </div></transition
-  >
+    <v-snackbar
+      class="v-application"
+      v-show="visible"
+      :timeout="-1"
+      :value="true"
+      absolute
+      bottom
+      color="primary"
+      right
+      text
+    >
+      {{ message }}
+    </v-snackbar>
+    >
+  </transition>
 </template>
 <script>
 export default {
@@ -23,7 +24,7 @@ export default {
       message: null,
       closed: false,
       timer: null,
-      duration: 3000,
+      duration: 1000,
     };
   },
   mounted() {
