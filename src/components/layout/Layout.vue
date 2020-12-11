@@ -104,7 +104,8 @@
     <v-navigation-drawer v-model="drawer" app clipped>
       <Menu />
     </v-navigation-drawer>
-    <v-main>
+    <!-- style="backgroud-color: #f2f5f8" -->
+    <v-main class="grey lighten-4">
       <v-container fluid>
         <!-- <Table /> -->
         <router-view></router-view>
