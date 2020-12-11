@@ -24,6 +24,22 @@ const constantRouter = [{
         component: () => import("@/views/icons/Icon")
     }]
 },{
+    name: "系统",
+    path: "/sys",
+    component: Layout,
+    meta: {
+        icon: "fa-wrench"
+    },
+    children: [{
+        name: "用户",
+        path: "/sys/user",
+        component: () => import("@/views/sys/user/User")
+    },{
+        name: "用户",
+        path: "//sys/user1",
+        component: () => import("@/views/sys/user/User")
+    }]
+},{
     name: "控制台1",
     path: "/1",
     component: Layout,

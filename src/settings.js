@@ -1,7 +1,7 @@
 const settings = {
     mock: true,
     axios: {
-        baseURL: "",
+        baseURL: "http://localhost:8091/",
         timeout: 1000 * 15,
     },
     app: {

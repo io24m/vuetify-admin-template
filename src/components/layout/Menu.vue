@@ -6,7 +6,8 @@
           <v-list-item-group color="primary" :key="index">
             <v-list-item :to="item.path">
               <v-list-item-icon>
-                <v-icon v-text="item.meta && item.meta.icon"> </v-icon>
+                <v-icon size="20" v-text="item.meta && item.meta.icon">
+                </v-icon>
               </v-list-item-icon>
               <v-list-item-content>
                 <v-list-item-title v-text="item.name"></v-list-item-title>
@@ -15,10 +16,10 @@
           </v-list-item-group>
         </template>
         <template v-else>
-          <v-list-group
-            :key="index"
-            :prepend-icon="item.meta && item.meta.icon"
-          >
+          <v-list-group :key="index">
+            <template v-slot:prependIcon>
+              <v-icon size="20" v-text="item.meta && item.meta.icon"></v-icon>
+            </template>
             <template v-slot:activator>
               <v-list-item-content>
                 <v-list-item-title v-text="item.name"></v-list-item-title>
@@ -30,9 +31,15 @@
                 :key="childIndex"
                 :to="child.path"
               >
+                <!-- mr-2 class="ml-4"-->
                 <v-list-item-icon>
-                  <!-- <v-icon v-text="child.meta && child.meta.icon"></v-icon> -->
-                  <v-icon></v-icon>
+                  <v-icon
+                    size="14"
+                    v-text="
+                      (child.meta && child.meta.icon) || 'mdi-circle-medium'
+                    "
+                  ></v-icon>
+                  <!-- <v-icon size="12"> mdi-circle-medium</v-icon> -->
                 </v-list-item-icon>
                 <v-list-item-content>
                   <v-list-item-title v-text="child.name"></v-list-item-title>
