@@ -1,6 +1,7 @@
 import Vue from "vue"
 import Router from "vue-router"
 import constantRouter from './constantRouter.js'
+import request from '@/utils/request'
 
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -47,8 +48,13 @@ router.beforeEach(async (to, from, next) => {
         return
     }
     //auth
-    
-    next()
+    request({
+        url: '/auth/data'
+    }).then(() => {
+        next()
+    }).catch(() => {
+        next(`/login`)
+    })
 });
 router.afterEach(() => {
     NProgress.done()

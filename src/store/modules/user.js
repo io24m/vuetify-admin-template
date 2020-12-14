@@ -22,13 +22,13 @@ const mutations = {
 }
 const actions = {
     login({ commit }, user) {
-        const { userName, password } = user
+        const { account, password } = user
         return new Promise((resolve, reject) => {
             request({
-                url: '/login',
+                url: '/auth/login',
                 method: 'post',
                 data: {
-                    userName,
+                    account,
                     password
                 }
             }).then(function (res) {

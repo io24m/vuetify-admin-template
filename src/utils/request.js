@@ -24,11 +24,11 @@ const responseFn = function (response) {
 }
 
 const responseErrorFn = function (error) {
-    console.error(error)
+    //console.error(error)
     if (error.response) {
         switch (error.response.status) {
             case 401:
-                confirm('过期')
+            //confirm('过期')
         }
     }
     return Promise.reject(error);
@@ -42,4 +42,11 @@ request.interceptors.request.use(configFn, (error) => Promise.reject(error));
 // 添加响应拦截器
 request.interceptors.response.use(responseFn, responseErrorFn);
 // request.interceptors.response.eject
+
+export function newRequest() {
+    const instance = axios.create(settings.axios)
+    instance.interceptors.request.use(configFn, (error) => Promise.reject(error));
+    return instance
+}
+
 export default request

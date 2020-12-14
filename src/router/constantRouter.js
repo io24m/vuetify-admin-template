@@ -23,7 +23,7 @@ const constantRouter = [{
         path: "/icons",
         component: () => import("@/views/icons/Icon")
     }]
-},{
+}, {
     name: "系统",
     path: "/sys",
     component: Layout,
@@ -34,12 +34,12 @@ const constantRouter = [{
         name: "用户",
         path: "/sys/user",
         component: () => import("@/views/sys/user/User")
-    },{
-        name: "用户",
-        path: "//sys/user1",
-        component: () => import("@/views/sys/user/User")
+    }, {
+        name: "角色",
+        path: "/sys/role",
+        component: () => import("@/views/sys/role/Role")
     }]
-},{
+}, {
     name: "控制台1",
     path: "/1",
     component: Layout,

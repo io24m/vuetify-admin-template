@@ -16,7 +16,7 @@
               class="mt-2"
               label="用户名"
               :rules="rules"
-              v-model="userName"
+              v-model="account"
             ></v-text-field>
             <v-text-field
               class="mt-2"
@@ -48,7 +48,7 @@ export default {
     snackbar: false,
     valid: false,
     errMsg: "",
-    userName: "",
+    account: "",
     password: "",
     rules: [
       (value) => !!value || "必填",
@@ -61,7 +61,7 @@ export default {
       if (this.$refs.form.validate()) {
         this.$store
           .dispatch("user/login", {
-            userName: this.userName,
+            account: this.account,
             password: this.password,
           })
           .then(() => {
