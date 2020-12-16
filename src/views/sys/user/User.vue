@@ -77,6 +77,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <v-btn @click="message">s</v-btn>
   </div>
 </template>
 <script>
@@ -122,6 +123,11 @@ export default {
         console.log(error);
       });
   },
-  methods: {},
+  methods: {
+    message(){
+      this.$snackbar("message", 'info')
+
+    }
+  },
 };
 </script>

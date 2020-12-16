@@ -111,6 +111,8 @@
         <router-view></router-view>
       </v-container>
     </v-main>
+    <MessageBox/>
+    <!-- <v-snackbar-queue></v-snackbar-queue> -->
   </v-app>
 </template>
 <script>
