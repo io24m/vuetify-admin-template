@@ -4,6 +4,8 @@ import {
     getToken
 } from '@/utils/auth.js'
 
+import Vue from 'vue'
+
 // import {
 //     message
 // } from 'ant-design-vue'
@@ -27,7 +29,16 @@ const responseErrorFn = function (error) {
     //console.error(error)
     if (error.response) {
         switch (error.response.status) {
-            case 401:
+            case 401: {
+                Vue.$messageBox({
+                    title: "无权限",
+                    message: "请重新登录",
+                    cb: function () {
+                        window.location = '/'
+                    },
+                })
+                return
+            }
             //confirm('过期')
         }
     }

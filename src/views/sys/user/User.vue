@@ -117,17 +117,24 @@ export default {
         this.loading = false;
         const { result } = data;
         this.datas = result;
-        console.log(result);
       })
       .catch((error) => {
         console.log(error);
       });
   },
   methods: {
-    message(){
-      this.$snackbar("message", 'info')
-
-    }
+    message() {
+      // var me = this;
+      //this.$snackbar("message", "info");
+   
+      this.$messageBox({
+        title: "退出",
+        message: "确认退出？",
+        cb: function () {
+          console.log("4444444");
+        },
+      });
+    },
   },
 };
 </script>

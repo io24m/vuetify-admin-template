@@ -2,35 +2,77 @@
 import { VDialog, VCard, VCardTitle, VCardText, VDivider, VCardActions, VSpacer, VBtn } from 'vuetify/lib';
 export default function install(Vue, config) {
     console.log(config)
-    const messageBoxState = [{
-        title: 'testTitle',
-        message: 'messageTitle',
-        callback: function () {
-            console.log("callback")
-        }
-    }];
+    const globalState = Vue.observable({ queue: [] });
+    // globalState.queue.push({
+    //     id: ++globalMessageBoxId,
+    //     shown: false,
+    //     title: ".titloptione",
+    //     message: "option.message",
+    //     callback: "option.cb"
+    // });
+    let globalMessageBoxId = 0;
     const MessageBox = {
-        props: {
-            show: {
-                type: Boolean,
-                default: true
-            },
-            title: {
-                default: 'info'
-            },
-            message: {
-                default: 'message'
+        // props: {
+        //     title: {
+        //         default: 'info'
+        //     },
+        //     message: {
+        //         default: 'message'
+        //     }
+        // },
+        data() {
+            return {
+                show: false,
+                title: 'info',
+                message: 'message'
             }
         },
         created() {
-            this.show()
+            this.nextShow()
         },
         methods: {
+            init() {
+
+            },
             close() {
                 this.show = false
+                if (this.item) {
+                    const index = globalState.queue.findIndex((element) => element.id === this.item.id);
+                    if (index > -1) {
+                        globalState.queue.splice(index, 1);
+                    }
+                }
+                if (this.item.callback) {
+                    this.item.callback()
+                }
+                this.item = null
+                // this.nextShow()
+                setTimeout(() => {
+                    this.nextShow()
+                }, 300)
             },
-            show() {
-
+            nextShow() {
+                const unwatch = this.$watch(function () {
+                    //return globalState.queue.find((element) => element.shown === false);
+                    // const item=globalState.queue.splice(0, 1);
+                    return globalState.queue;
+                }, function (newVal) {
+                    newVal = globalState.queue.find((element) => element.shown === false)
+                    if (!newVal) {
+                        return
+                    }
+                    if (unwatch) {
+                        unwatch();
+                    }
+                    console.log(newVal)
+                    newVal.shown = true
+                    this.title = newVal.title
+                    this.message = newVal.message
+                    this.item = newVal
+                    this.show = true
+                }, {
+                    //immediate: true
+                })
             }
         },
         render(h) {
@@ -62,8 +104,13 @@ export default function install(Vue, config) {
         },
     }
     Vue.component("MessageBox", MessageBox)
-    Vue.prototype.$messageBox = function (option) {
-        console.log(option)
-        messageBoxState.push({});
+    Vue.$messageBox = Vue.prototype.$messageBox = function (option) {
+        globalState.queue.push({
+            id: ++globalMessageBoxId,
+            shown: false,
+            title: option.title,
+            message: option.message,
+            callback: option.cb
+        });
     }
 }
