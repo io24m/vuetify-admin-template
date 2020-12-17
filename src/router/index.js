@@ -6,11 +6,11 @@ import request from '@/utils/request'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
-import {
-    getToken
-} from '@/utils/auth.js'
+import { getToken } from '@/utils/auth.js'
 
 import settings from '@/settings.js'
+
+// import { newRequest } from '@/utils/request'
 
 NProgress.configure({
     showSpinner: false
@@ -51,6 +51,7 @@ router.beforeEach(async (to, from, next) => {
     request({
         url: '/auth/data'
     }).then(() => {
+        //authData
         next()
     }).catch(() => {
         next(`/login`)
