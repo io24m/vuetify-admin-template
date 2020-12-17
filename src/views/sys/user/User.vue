@@ -134,6 +134,13 @@ export default {
           console.log("4444444");
         },
       });
+       this.$messageBox({
+        title: "退出1",
+        message: "确认退出1？",
+        cb: function () {
+          console.log("44444441");
+        },
+      });
     },
   },
 };

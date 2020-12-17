@@ -28,7 +28,7 @@ export default function install(Vue, config) {
             }
         },
         created() {
-            this.nextShow()
+            this.w()
         },
         methods: {
             init() {
@@ -46,15 +46,25 @@ export default function install(Vue, config) {
                     this.item.callback()
                 }
                 this.item = null
+                var next=this.next()
+                if  (next){
+                    setTimeout(() => {
+                        this.nextShow(next)
+                    }, 300)
+                    return
+                }
                 // this.nextShow()
-                setTimeout(() => {
-                    this.nextShow()
-                }, 300)
+                this.w()
             },
-            nextShow() {
+            next() {
+                if (globalState.queue.length > 0) {
+                    console.log(globalState.queue[0])
+                    return globalState.queue[0]
+                }
+                return null
+            },
+            w(){
                 const unwatch = this.$watch(function () {
-                    //return globalState.queue.find((element) => element.shown === false);
-                    // const item=globalState.queue.splice(0, 1);
                     return globalState.queue;
                 }, function (newVal) {
                     newVal = globalState.queue.find((element) => element.shown === false)
@@ -72,7 +82,14 @@ export default function install(Vue, config) {
                     this.show = true
                 }, {
                     //immediate: true
-                })
+                }) 
+            },
+            nextShow(newVal) { 
+                newVal.shown = true
+                this.title = newVal.title
+                this.message = newVal.message
+                this.item = newVal
+                this.show = true
             }
         },
         render(h) {
