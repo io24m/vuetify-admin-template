@@ -111,7 +111,7 @@
         <router-view></router-view>
       </v-container>
     </v-main>
-    <MessageBox intervalTime="300" />
+    <MessageBox />
     <!-- <v-snackbar-queue></v-snackbar-queue> -->
   </v-app>
 </template>

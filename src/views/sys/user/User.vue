@@ -50,7 +50,9 @@
     <!-- addUser -->
     <v-dialog v-model="dialog" persistent max-width="600">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn color="primary" dark v-bind="attrs" v-on="on"> 新增 </v-btn>
+        <v-btn color="primary" class="mt-1" dark v-bind="attrs" v-on="on">
+          新增
+        </v-btn>
       </template>
       <v-card>
         <v-card-title>
@@ -77,7 +79,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <v-btn @click="message">s</v-btn>
+    <v-btn color="primary" class="ml-1 mt-1" @click="message">s</v-btn>
   </div>
 </template>
 <script>
@@ -127,17 +129,39 @@ export default {
       this.$messageBox({
         title: "退出",
         message: "确认退出？",
+        ok: function () {
+          console.log("ok");
+        },
+        cancel: function () {
+          console.log("cancel");
+        },
         cb: function () {
-          console.log("4444444");
+          console.log("logout");
         },
       });
-      this.$messageBox({
-        title: "退出1",
-        message: "确认退出1？",
-        cb: function () {
-          console.log("44444441");
-        },
-      });
+      // this.$messageBox.info({
+      //   title: "退出",
+      //   message: "确认退出？",
+      //   cb: function () {
+      //     console.log("4444444");
+      //   },
+      // });
+
+      // this.$messageBox.warn({
+      //   title: "退出",
+      //   message: "确认退出？",
+      //   cb: function () {
+      //     console.log("4444444");
+      //   },
+      // });
+
+      // this.$messageBox.error({
+      //   title: "退出",
+      //   message: "确认退出？",
+      //   cb: function () {
+      //     console.log("4444444");
+      //   },
+      // });
     },
   },
 };
