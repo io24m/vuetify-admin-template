@@ -124,9 +124,6 @@ export default {
   },
   methods: {
     message() {
-      // var me = this;
-      //this.$snackbar("message", "info");
-   
       this.$messageBox({
         title: "退出",
         message: "确认退出？",
@@ -134,7 +131,7 @@ export default {
           console.log("4444444");
         },
       });
-       this.$messageBox({
+      this.$messageBox({
         title: "退出1",
         message: "确认退出1？",
         cb: function () {

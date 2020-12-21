@@ -1,25 +1,15 @@
-// import { VSnackbar, VBtn } from 'vuetify/lib';
 import { VDialog, VCard, VCardTitle, VCardText, VDivider, VCardActions, VSpacer, VBtn } from 'vuetify/lib';
 export default function install(Vue, config) {
     console.log(config)
     const globalState = Vue.observable({ queue: [] });
-    // globalState.queue.push({
-    //     id: ++globalMessageBoxId,
-    //     shown: false,
-    //     title: ".titloptione",
-    //     message: "option.message",
-    //     callback: "option.cb"
-    // });
     let globalMessageBoxId = 0;
     const MessageBox = {
-        // props: {
-        //     title: {
-        //         default: 'info'
-        //     },
-        //     message: {
-        //         default: 'message'
-        //     }
-        // },
+        props: {
+            intervalTime: {
+                type: Number,
+                default: 300
+            }
+        },
         data() {
             return {
                 show: false,
@@ -31,9 +21,6 @@ export default function install(Vue, config) {
             this.w()
         },
         methods: {
-            init() {
-
-            },
             close() {
                 this.show = false
                 if (this.item) {
@@ -46,14 +33,13 @@ export default function install(Vue, config) {
                     this.item.callback()
                 }
                 this.item = null
-                var next=this.next()
-                if  (next){
+                var next = this.next()
+                if (next) {
                     setTimeout(() => {
                         this.nextShow(next)
-                    }, 300)
+                    }, this.intervalTime)
                     return
                 }
-                // this.nextShow()
                 this.w()
             },
             next() {
@@ -63,7 +49,8 @@ export default function install(Vue, config) {
                 }
                 return null
             },
-            w(){
+            w() {
+                var me = this;
                 const unwatch = this.$watch(function () {
                     return globalState.queue;
                 }, function (newVal) {
@@ -74,17 +61,10 @@ export default function install(Vue, config) {
                     if (unwatch) {
                         unwatch();
                     }
-                    console.log(newVal)
-                    newVal.shown = true
-                    this.title = newVal.title
-                    this.message = newVal.message
-                    this.item = newVal
-                    this.show = true
-                }, {
-                    //immediate: true
-                }) 
+                    me.nextShow(newVal)
+                })
             },
-            nextShow(newVal) { 
+            nextShow(newVal) {
                 newVal.shown = true
                 this.title = newVal.title
                 this.message = newVal.message
