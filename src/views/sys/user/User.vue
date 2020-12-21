@@ -63,7 +63,7 @@
             ><v-row
               ><v-col cols="12" sm="6" md="4">
                 <v-text-field
-                  label="Legal first name*"
+                  label="用户名"
                   required
                 ></v-text-field> </v-col></v-row
           ></v-container>
@@ -109,6 +109,11 @@ export default {
       ],
       datas: [],
       dialog: false,
+      user: {
+        account: "",
+        name: "",
+        enable: true,
+      },
     };
   },
   mounted() {
@@ -125,6 +130,7 @@ export default {
       });
   },
   methods: {
+    addUser() {},
     message() {
       this.$messageBox({
         title: "退出",
