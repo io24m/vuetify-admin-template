@@ -129,6 +129,9 @@ export default {
       this.$messageBox({
         title: "退出",
         message: "确认退出？",
+        okText: "ok",
+        cancelText: "cancel",
+        showCancel: true,
         ok: function () {
           console.log("ok");
         },

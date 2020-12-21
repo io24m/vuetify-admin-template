@@ -15,6 +15,10 @@ export default function install(Vue, config) {
             intervalTime: {
                 type: Number,
                 default: config && config.intervalTime || 300
+            },
+            width: {
+                type: Number,
+                default: config && config.width || 300
             }
         },
         data() {
@@ -22,7 +26,10 @@ export default function install(Vue, config) {
                 show: false,
                 color: 'green darken-1',
                 title: '消息',
-                message: '消息'
+                message: '消息',
+                showCancel: false,
+                okText: '确定',
+                cancelText: '取消',
             }
         },
         created() {
@@ -90,6 +97,9 @@ export default function install(Vue, config) {
                 newVal.shown = true
                 this.title = newVal.title
                 this.message = newVal.message
+                this.okText = newVal.okText || this.okText
+                this.cancelText = newVal.cancelText || this.cancelText
+                this.showCancel = newVal.showCancel || false
                 this.item = newVal
                 if (messageColor[newVal.type]) {
                     this.color = messageColor[newVal.type]
@@ -102,7 +112,7 @@ export default function install(Vue, config) {
                 props: {
                     persistent: true,
                     value: this.show,
-                    width: 500,
+                    width: this.width,
                     noClickAnimation: false
                 }
             }, [
@@ -112,15 +122,16 @@ export default function install(Vue, config) {
                     h(VDivider),
                     h(VCardActions, [
                         h(VSpacer),
-                        h(VBtn, {
-                            props: {
-                                color: this.color,
-                                text: true
-                            },
-                            on: {
-                                click: this.cancel
-                            }
-                        }, "取消"),
+                        this.showCancel ?
+                            h(VBtn, {
+                                props: {
+                                    color: this.color,
+                                    text: true
+                                },
+                                on: {
+                                    click: this.cancel
+                                }
+                            }, this.cancelText) : '',
                         h(VBtn, {
                             props: {
                                 color: this.color,
@@ -129,7 +140,7 @@ export default function install(Vue, config) {
                             on: {
                                 click: this.ok
                             }
-                        }, "确认")
+                        }, this.okText)
                     ])
                 ])
             ])
