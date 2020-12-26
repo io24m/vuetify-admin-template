@@ -32,7 +32,7 @@
                 :to="child.path"
               >
                 <!-- mr-2 class="ml-4"-->
-                <v-list-item-icon>
+                <v-list-item-icon class="ml-4 mr-4">
                   <v-icon
                     size="14"
                     v-text="
