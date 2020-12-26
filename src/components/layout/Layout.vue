@@ -101,7 +101,7 @@
     </v-app-bar>
     <!-- app bar-->
 
-    <v-navigation-drawer v-model="drawer" app clipped>
+    <v-navigation-drawer v-model="drawer" app clipped width="220">
       <Menu />
     </v-navigation-drawer>
     <!-- style="backgroud-color: #f2f5f8" -->
