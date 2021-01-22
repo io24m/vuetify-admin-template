@@ -14,19 +14,16 @@ const data = {
     admin: {}
 }
 
-
 export default {
-    login: (params) => {
-        const { userName } = JSON.parse(params.body);
-        const user = users[userName];
+    login: () => {
+        const user = users["admin"];
         return user ? okJson(user.token) : failJson("error")
     },
     logout: () => {
         return failJson("error")
     },
-    authData: (params) => {
-        const { userName } = JSON.parse(params.body);
-        const authData = data[userName];
+    authData: () => {
+        const authData = data["admin"];
         return authData ? okJson(authData) : failJson("error")
     },
     notAuth: () => {
