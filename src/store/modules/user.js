@@ -26,7 +26,6 @@ const actions = {
         return new Promise((resolve, reject) => {
             request({
                 url: '/auth/login',
-                method: 'post',
                 data: {
                     account,
                     password

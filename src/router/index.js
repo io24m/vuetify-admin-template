@@ -53,8 +53,12 @@ router.beforeEach(async (to, from, next) => {
     }).then(() => {
         //authData
         next()
-    }).catch(() => {
-        next(`/login`)
+    }).catch((err) => {
+        console.log(err)
+        if (err.response.status === 401) {
+            next(`/login`)
+        }
+        //next(`/login`)
     })
 });
 router.afterEach(() => {
