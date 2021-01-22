@@ -9,7 +9,7 @@ const request = axios.create(Object.assign(settings.axios, {
     method: 'post',
     headers: { post: { 'Content-Type': 'application/x-www-form-urlencoded' } }
 }))
-console.log(request)
+
 request.interceptors.request.use(function (config) {
     config.headers['Admin-Token'] = getToken()
     if (config.method.toLocaleLowerCase() === 'post') {
