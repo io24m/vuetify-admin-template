@@ -22,8 +22,8 @@ npm run lint
 
 ### Screenshot
 
-![Image text](https://github.com/io24m/vuetify-admin-template/blob/main/screenshot/1.png)
+![Image text](https://raw.githubusercontent.com/io24m/vuetify-admin-template/main/screenshot/1.png)
 
-![Image text](https://github.com/io24m/vuetify-admin-template/blob/main/screenshot/2.png)
+![Image text](https://raw.githubusercontent.com/io24m/vuetify-admin-template/main/screenshot/2.png)
 
 
