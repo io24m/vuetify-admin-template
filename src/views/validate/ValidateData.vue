@@ -2,7 +2,7 @@
   <div>
     <v-btn depressed color="primary" @click="onPost" class="mb-4"> post </v-btn>
     <v-textarea outlined label="params" v-model="person"></v-textarea>
-    <v-textarea outlined label="response" v-model="response"></v-textarea>
+    <v-textarea auto-grow outlined label="response" v-model="response"></v-textarea>
   </div>
 </template>
 <script>
@@ -18,14 +18,24 @@ export default {
   },
   methods: {
     init() {
-      this.person = JSON.stringify({
-        age: " ",
-        name: " ",
-      });
+      this.person = JSON.stringify(
+        {
+          age: "",
+          name: "",
+          birthday:new Date()
+        },
+        null,
+        "\t"
+      );
     },
     onPost() {
       this.response = "";
-      this.response = this.person;
+      this.$http({
+        url: "/validate/data",
+        data: JSON.parse(this.person),
+      }).then((data) => {
+        this.response = JSON.stringify(data.result, null, "\t");
+      });
     },
   },
 };

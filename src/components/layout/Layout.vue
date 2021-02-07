@@ -105,7 +105,8 @@
       <Menu />
     </v-navigation-drawer>
     <!-- style="backgroud-color: #f2f5f8" -->
-    <v-main class="grey lighten-4">
+    <!-- <v-main class="grey lighten-4"> -->
+    <v-main>
       <v-container fluid>
         <!-- <Table /> -->
         <router-view></router-view>
