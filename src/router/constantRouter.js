@@ -32,11 +32,11 @@ const constantRouter = [{
     },
     children: [{
         name: "验证数据",
-        path: "/data",
+        path: "/validate/data",
         component: () => import("@/views/validate/ValidateData")
     }, {
         name: "配置",
-        path: "/config",
+        path: "/validate/config",
         component: () => import("@/views/validate/ValidateConfig")
     }]
 }, {
