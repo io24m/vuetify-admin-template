@@ -39,11 +39,11 @@
         open-on-hover
         class="d-none d-md-flex"
       >
-        <template v-slot:activator="{ attrs, on }">
+        <!-- <template v-slot:activator="{ attrs, on }">
           <v-btn class="ma-2 d-none d-md-flex" v-bind="attrs" v-on="on" text>
             调色板 <v-icon>mdi-open-in-new</v-icon>
           </v-btn>
-        </template>
+        </template> -->
 
         <v-list>
           <v-list-item v-for="(item, index) in items" :key="index" link>
@@ -52,7 +52,7 @@
         </v-list>
       </v-menu>
 
-      <v-btn
+      <!-- <v-btn
         class="ma-1 d-none d-md-flex"
         href="https://github.com/vuetifyjs/vuetify/releases/latest"
         target="_blank"
@@ -60,7 +60,7 @@
       >
         <span class="mr-1">最新版本</span>
         <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      </v-btn> -->
 
       <!-- fab -->
       <v-btn
@@ -78,7 +78,7 @@
       <v-btn icon right class="mr-4" rounded small>
         <v-icon>fa-user-circle</v-icon>
       </v-btn>
-      <v-tooltip bottom>
+      <!-- <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
           <v-btn
             icon
@@ -93,7 +93,7 @@
           </v-btn>
         </template>
         <span>最大化</span>
-      </v-tooltip>
+      </v-tooltip> -->
 
       <v-avatar color="primary" size="40">
         <span class="white--text headline">40</span></v-avatar

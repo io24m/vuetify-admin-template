@@ -24,6 +24,22 @@ const constantRouter = [{
         component: () => import("@/views/icons/Icon")
     }]
 }, {
+    name: "验证",
+    path: "/validate",
+    component: Layout,
+    meta: {
+        icon: "fa-tachometer"
+    },
+    children: [{
+        name: "验证数据",
+        path: "/data",
+        component: () => import("@/views/validate/ValidateData")
+    }, {
+        name: "配置",
+        path: "/config",
+        component: () => import("@/views/validate/ValidateConfig")
+    }]
+}, {
     name: "系统",
     path: "/sys",
     component: Layout,
@@ -38,17 +54,6 @@ const constantRouter = [{
         name: "角色",
         path: "/sys/role",
         component: () => import("@/views/sys/role/Role")
-    }]
-}, {
-    name: "控制台1",
-    path: "/1",
-    component: Layout,
-    meta: {
-        icon: "fa-tachometer"
-    },
-    children: [{
-        path: "/1",
-        component: () => import("@/views/dashboard/Dashboard1")
     }]
 }, {
     name: "列表",
@@ -72,39 +77,6 @@ const constantRouter = [{
         meta: {
             icon: "mdi-run"
         },
-    }]
-}, {
-    name: '邮件',
-    path: '/email',
-    component: Layout,
-    meta: {
-        icon: 'mdi-account-multiple'
-    },
-    children: [{
-        path: "/email",
-        component: () => import("@/views/table/Table")
-    }]
-}, {
-    name: '车票',
-    path: '/email1',
-    component: Layout,
-    meta: {
-        icon: 'mdi-ticket'
-    },
-    children: [{
-        path: "/email",
-        component: () => import("@/views/table/Table")
-    }]
-}, {
-    name: '学校',
-    path: '/email12',
-    component: Layout,
-    meta: {
-        icon: 'mdi-school'
-    },
-    children: [{
-        path: "/email",
-        component: () => import("@/views/table/Table")
     }]
 }];
 constantRouter.push({
