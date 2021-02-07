@@ -20,5 +20,10 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Screenshot
+
+![Image text](https://raw.githubusercontent.com/io24m/vuetify-admin-template/main/screenshot/1.png)
+
+![Image text](https://raw.githubusercontent.com/io24m/vuetify-admin-template/main/screenshot/2.png)
+
+
