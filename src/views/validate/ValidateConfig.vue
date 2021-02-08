@@ -1,18 +1,13 @@
 <template>
-  <div>
-    <div v-for="(item, index) in configTree" :key="index">
-      {{ item.className }}
-    </div>
-    <div>-----------</div>
+  <div> 
 
     <div v-for="(item, index) in config" :key="index">
       {{ item.className + "." + item.key + "." + item.validateType }}
       <div>{{ item.check ? "验证" : "不验证" }}</div>
       <div>{{ item.pass ? "跳过" : "不跳过" }}</div>
       <div>{{ item.errormessage }}</div>
-    </div>
+    </div> 
 
-    <v-treeview :items="configTree"></v-treeview>
   </div>
 </template>
 <script>
@@ -24,9 +19,7 @@ export default {
   },
   watch: {},
   computed: {
-    configTree() {
-      return this.g(this.config);
-    },
+    
   },
   created() {
     this.init();
@@ -34,7 +27,7 @@ export default {
   methods: {
     init() {
       this.$http({
-        url: "/validate/config",
+        url: "/validate/config/getClassConfig",
       }).then((data) => {
         this.config = data.result;
         let t = this.g(this.config);
