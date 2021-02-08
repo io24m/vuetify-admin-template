@@ -35,7 +35,7 @@
         </template>
         <template v-slot:[`item.pass`]="{ item }">
           <v-chip small :color="item.pass ? 'red' : 'green'">
-            {{ item.pass ? "不报错" : "报错" }}
+            {{ item.pass ? "跳过" : "不跳过" }}
           </v-chip>
         </template>
 
@@ -58,33 +58,30 @@
           <v-container>
             <v-row>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field
-                  v-model="editedItem.name"
-                  label="Dessert name"
-                ></v-text-field>
+                <v-checkbox
+                  v-model="editedItem.check"
+                  label="是否验证"
+                ></v-checkbox>
+
+                <!-- <v-text-field
+                  v-model="editedItem.check"
+                  label="是否验证"
+                ></v-text-field> -->
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
+                <v-checkbox
+                  v-model="editedItem.pass"
+                  label="跳过错误"
+                ></v-checkbox>
+                <!-- <v-text-field
+                  v-model="editedItem.pass"
+                  label="验证逻辑"
+                ></v-text-field> -->
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <v-text-field
-                  v-model="editedItem.calories"
-                  label="Calories"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field
-                  v-model="editedItem.fat"
-                  label="Fat (g)"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field
-                  v-model="editedItem.carbs"
-                  label="Carbs (g)"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field
-                  v-model="editedItem.protein"
-                  label="Protein (g)"
+                  v-model="editedItem.errorMessage"
+                  label="错误信息"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -184,7 +181,11 @@ export default {
     editClose() {
       this.editDialog = false;
     },
-    editSave() {},
+    editSave() {
+
+
+
+    },
     deleteItem(item) {
       this.editedIndex = this.fileConfigs.indexOf(item);
       this.editedItem = Object.assign({}, item);
