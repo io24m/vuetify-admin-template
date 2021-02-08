@@ -1,26 +1,74 @@
 <template>
-  <div> 
+  <div>
+    <v-card>
+      <v-tabs
+        background-color="primary"
+        center-active
+        dark
+        @change="tabChange"
+      >
+        <v-tab v-for="(item, i) in classConfig" :key="i">{{
+          item.className
+        }}</v-tab>
+      </v-tabs>
+    </v-card>
 
-    <div v-for="(item, index) in config" :key="index">
-      {{ item.className + "." + item.key + "." + item.validateType }}
-      <div>{{ item.check ? "验证" : "不验证" }}</div>
-      <div>{{ item.pass ? "跳过" : "不跳过" }}</div>
-      <div>{{ item.errormessage }}</div>
-    </div> 
-
+    <v-card class="flex-row mt-2" tile>
+      <v-card-subtitle>{{ classType }}</v-card-subtitle>
+      <v-data-table
+        :headers="headers"
+        :items="fileConfigs"
+        item-key="name"
+        class="elevation-1"
+        hide-default-footer
+      >
+        <template v-slot:[`item.check`]="{ item }">
+          <v-chip small :color="item.check ? 'green' : 'red'">
+            {{ item.check ? "启用" : "禁用" }}
+          </v-chip>
+        </template>
+        <template v-slot:[`item.pass`]="{ item }">
+          <v-chip small :color="item.pass ? 'red' : 'green'">
+            {{ item.pass ? "不报错" : "报错" }}
+          </v-chip>
+        </template>
+      </v-data-table>
+    </v-card>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      config: [],
+      classConfig: [],
+      classType: "",
+      headers: [
+        {
+          text: "字段",
+          value: "fileKey",
+        },
+        {
+          text: "验证类型",
+          value: "validateType",
+        },
+        {
+          text: "验证",
+          value: "check",
+        },
+        {
+          text: "验证逻辑",
+          value: "pass",
+        },
+        {
+          text: "错误信息",
+          value: "errorMessage",
+        },
+      ],
+      fileConfigs: [],
     };
   },
   watch: {},
-  computed: {
-    
-  },
+  computed: {},
   created() {
     this.init();
   },
@@ -29,40 +77,23 @@ export default {
       this.$http({
         url: "/validate/config/getClassConfig",
       }).then((data) => {
-        this.config = data.result;
-        let t = this.g(this.config);
-        console.log(t);
+        this.classConfig = data.result;
       });
     },
-    getConfigClass() {},
-    g(c) {
-      if (!c) {
+    tabChange(index) {
+      if (!this.classConfig || this.classConfig.length <= index) {
         return;
       }
-      let r = [];
-      c.forEach((item) => {
-        let children;
-        for (let i = 0; i < r.length; i++) {
-          if (item.key === r[i].key) {
-            children=r[i].children
-          }
-        }
-        if (children) {
-          children.push({
-            validateType: item.validateType,
-            check: item.check,
-            pass: item.pass,
-            errormessage: item.errormessage,
-          });
-          return;
-        }
-        r.push({
-          className: item.className,
-          key: item.key,
-          children: [],
-        });
+      const item = this.classConfig[index];
+      this.classType = item.classType;
+      this.$http({
+        url: "/validate/config/getFileConfig",
+        data: {
+          classType: item.classType,
+        },
+      }).then((data) => {
+        this.fileConfigs = data.result;
       });
-      return r;
     },
   },
 };
